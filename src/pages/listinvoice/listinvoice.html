@@ -15,7 +15,8 @@
   <ion-card *ngFor="let i of invoiceJson" [ngClass]="i.claim_status == 'Partially Cancelled' ? 'boxThis': ''">
     <ion-item (click)="goToInvoiceDetails(i.invoice_no)">
       <h2><span><b>No : </b></span> {{i.invoice_no}}</h2>
-      <h2><span><b>Invoice Date : </b></span> <span style="padding-left:10px;">{{i.invoice_date | date }}</span></h2>
+      <h2><span><b>Invoice Date : </b></span> <span
+          style="padding-left:10px;">{{i.invoice_date | date:'d MMM yyyy'}}</span></h2>
 
       <div><b>Status : </b>
         <ion-badge *ngIf="i.claim_status == null" color="primary">N/A</ion-badge>
