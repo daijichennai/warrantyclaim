@@ -30,6 +30,10 @@ export class HomePage {
     this.navCtrl.push('BarcodePage');
   }
 
+  goToCreditNote(){
+    this.navCtrl.push('CreditnotePage');
+  }
+
   settingFn() {
     this.navCtrl.push('SettingsPage');
   }

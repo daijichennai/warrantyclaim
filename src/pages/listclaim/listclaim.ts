@@ -53,7 +53,7 @@ export class ListclaimPage {
           this.isClaimAvailable = true;
         loader.dismiss();
         console.log(error);
-        //alert('Error in Invoice');
+        //alert('Error in List Claim');
       });
     });
   }
