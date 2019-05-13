@@ -28,8 +28,8 @@ export class HomePage {
     this.navCtrl.push('ListclaimPage');
   }
 
-  goToBarCode(){
-    this.navCtrl.push('BarcodePage');
+  goToQRCode(){
+    this.navCtrl.push('QrcodePage');
   }
 
   goToCreditNote(){
