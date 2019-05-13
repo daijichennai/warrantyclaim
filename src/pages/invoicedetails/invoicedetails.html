@@ -4,16 +4,19 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding class="bg-content">
-  <ion-card *ngFor="let i of invDetJson; first as isFirst" class="ion-card" ion-text color="light">
-    <ion-row *ngIf="isFirst">
-      <ion-col col-12 text-center>Invoice No - {{i.invoice_no}}</ion-col>
-    </ion-row>
-    <ion-row *ngIf="isFirst">
-      <ion-col col-12 text-center>Invoice Date - {{i.invoice_date | date}}</ion-col>
-    </ion-row>
+<ion-content padding >
+
+  <ion-card *ngFor="let i of invDetJson; first as isFirst" ion-text color="light">
+    <div *ngIf="isFirst" class="ion-card">
+      <ion-row>
+        <ion-col col-12 text-center>Invoice No - {{i.invoice_no}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12 text-center>Invoice Date - {{i.invoice_date | date}}</ion-col>
+      </ion-row>
+    </div>
   </ion-card>
-  <ion-list *ngFor="let i of invDetJson; index as i; index as j" class="bg-card">
+  <ion-list *ngFor="let i of invDetJson;" >
     <ion-card style="border-radius: 3px;">
       <ion-grid>
         <ion-card-content style="color: #333333;">
