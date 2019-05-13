@@ -22,6 +22,10 @@ export class HomePage {
     this.navCtrl.push('ListinvoicePage');
   }
 
+  goToListClaims(){
+    this.navCtrl.push('ListclaimPage');
+  }
+
   goToBarCode(){
     this.navCtrl.push('BarcodePage');
   }
