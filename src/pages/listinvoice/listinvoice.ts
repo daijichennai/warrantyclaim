@@ -74,23 +74,4 @@ goToInvoiceDetails(invoiceNo){
       }); 
     }
   }
-
-  searchitem(searchbar) {
-    
-    //alert(JSON.stringfy(searchbar));
-
-    var val = searchbar.target.value;
-    if (val && val.trim() != '') {
-      this.invoiceJson = this.invoiceJson.filter((item) => {
-        return item.invoice_no.toLowerCase().indexOf(val.toLowerCase()) > -1;
-      });
-    }else{
-      
-    }
-  }
-
-  ionCancel($event){
-    alert('cancel');
-  }
-
 }

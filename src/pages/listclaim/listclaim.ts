@@ -58,14 +58,18 @@ export class ListclaimPage {
     });
   }
 
-  searchitem(searchbar) {
-    console.log(searchbar);
-    var val = searchbar.target.value;
-    if (val && val.trim() != '') {
+  onSearch(event) {
+    console.log(event.target.value);
+    var searchTxt = event.target.value;
+    if (searchTxt != '' && searchTxt != null && searchTxt != undefined) {
       this.claimJson = this.claimJson.filter((item) => {
-        return item.invoice_no.toLowerCase().indexOf(val.toLowerCase()) > -1 || item.claim_status.toLowerCase().indexOf(val.toLowerCase()) > -1;
+        return item.invoice_no.toLowerCase().indexOf(searchTxt.toLowerCase()) > -1 || item.claim_status.toLowerCase().indexOf(searchTxt.toLowerCase()) > -1;
+      });
+    } else {
+      this.claimJson = null;
+      this.storage.get('lsCustCode').then((custCode) => {
+        this.getListClaimByCustCode(custCode);
       });
     }
   }
-
 }
