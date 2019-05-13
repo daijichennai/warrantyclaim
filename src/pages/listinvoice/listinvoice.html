@@ -17,19 +17,18 @@
       <h2><span><b>No : </b></span> {{i.invoice_no}}</h2>
       <h2><span><b>Invoice Date : </b></span> <span style="padding-left:10px;">{{i.invoice_date | date }}</span></h2>
 
-      <div *ngIf="i.claim_status == null"><b>Status : </b>
-        <ion-badge color="primary">N/A</ion-badge>
-      </div>
-      <div *ngIf="i.claim_status == 'Completed'"><b>Status : </b>
-        <ion-badge color="secondary">Completed</ion-badge>
-      </div>
-      <div
-        *ngIf="i.claim_status == 'Processing' || i.claim_status=='Waiting for Approval' || i.claim_status=='Material Received' || i.claim_status=='Approved' || i.claim_status=='Sales Person Approved' || i.claim_status=='Documents Needed' ">
-        <b>Status : </b>
-        <ion-badge color="blue">Processing</ion-badge>
-      </div>
-      <div *ngIf="i.claim_status == 'Partially Cancelled'"><b>Status : </b>
-        <ion-badge color="danger">{{i.claim_status}}</ion-badge>
+      <div><b>Status : </b>
+        <ion-badge *ngIf="i.claim_status == null" color="primary">N/A</ion-badge>
+
+        <ion-badge *ngIf="i.claim_status == 'Completed' || i.claim_status == 'Documents Uploaded'" color="secondary">
+          {{i.claim_status}}</ion-badge>
+
+        <ion-badge
+          *ngIf="i.claim_status == 'Processing' || i.claim_status=='Waiting for Approval' || i.claim_status=='Material Received' || i.claim_status=='Approved' || i.claim_status=='Sales Person Approved' || i.claim_status=='Documents Needed' "
+          color="blue">{{i.claim_status}}</ion-badge>
+
+        <ion-badge *ngIf="i.claim_status == 'Partially Cancelled'" color="danger">{{i.claim_status}}</ion-badge>
+
       </div>
 
     </ion-item>
