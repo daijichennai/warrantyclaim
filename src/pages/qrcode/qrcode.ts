@@ -11,9 +11,7 @@ import { BarcodeScanner ,BarcodeScannerOptions } from '@ionic-native/barcode-sca
 })
 export class QrcodePage {
   options: BarcodeScannerOptions;
-  encodText:String='';
-  encodData:any={};
-  scannedData:any={};
+  scannedData:any;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -27,21 +25,16 @@ export class QrcodePage {
 
   scanQRCode() {
     this.options = {
-      prompt:'Scan Your Bar Code'
+      prompt:'Scan Your QR Code',
+      showTorchButton:true,
+      showFlipCameraButton:true
     };
     this.scanner.scan(this.options).then((response) =>{
-      this.scannedData = response;
+      this.scannedData = JSON.stringify(response);;
      },error =>{
        console.log(error);
      });
   }
-
-  encode(){
-    this.scanner.encode(this.scanner.Encode.TEXT_TYPE, this.encodText).then((result) => {
-      this.encodData = result;
-    }, error => {
-      console.log(error);
-    });
-  }
+ 
 
 }
