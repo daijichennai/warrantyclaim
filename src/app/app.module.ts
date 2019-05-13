@@ -7,6 +7,7 @@ import { MyApp } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage';
 import { CommfuncProvider } from '../providers/commfunc/commfunc';
+import { Network } from '@ionic-native/network';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { CommfuncProvider } from '../providers/commfunc/commfunc';
   providers: [
     StatusBar,
     SplashScreen,
+    Network,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     CommfuncProvider
   ]

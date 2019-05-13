@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { CommfuncProvider } from '../../providers/commfunc/commfunc';
 @IonicPage()
 @Component({
   selector: 'page-home',
@@ -11,11 +11,13 @@ export class HomePage {
   constructor(
         public navCtrl: NavController,
         public navParams: NavParams,
+        public myFunc: CommfuncProvider
     )
-    {
-      // this.platform.registerBackButtonAction(() => {
-        
-      // });
+    { 
+  }
+
+  ionViewDidLoad() {
+    
   }
  
   goToListInvoice(){
@@ -38,8 +40,6 @@ export class HomePage {
     this.navCtrl.push('SettingsPage');
   }
 
-  ionViewDidLoad() {
-    //this.viewCtrl.dismiss();
-  }
+ 
 
 }
