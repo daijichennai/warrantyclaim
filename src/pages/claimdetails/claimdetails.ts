@@ -4,6 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { Storage } from '@ionic/storage';
 import { CommfuncProvider } from '../../providers/commfunc/commfunc';
+
+const MEDIA_FILES_KEY = 'mediaFiles';
 @IonicPage()
 @Component({
   selector: 'page-claimdetails',
@@ -22,6 +24,8 @@ export class ClaimdetailsPage {
         private storage: Storage,
     ) {
     this.claimID = this.navParams.get('claimID');
+    this.storage.set(MEDIA_FILES_KEY, '');
+    localStorage.removeItem('audiolist');
   }
 
 
@@ -49,6 +53,20 @@ export class ClaimdetailsPage {
         console.log(error);
         //alert('Error in Claim Details');
       });
+    });
+  }
+
+  goToReviewPage(Vid, SValue) {
+    this.navCtrl.push('ReviewdetailsPage', {
+      "Vid": Vid,
+      "Svalue": SValue
+    });
+  }
+
+  UploadData(Uid) {
+    this.navCtrl.push('FileuploadPage', {
+      "Uid": Uid,
+      "Mid": this.claimID
     });
   }
 
