@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators, AbstractControl, ValidatorFn } from "@angular/forms";
-
+import { Storage } from '@ionic/storage';
 @IonicPage()
 @Component({
   selector: 'page-changepwd',
@@ -18,6 +18,7 @@ export class ChangepwdPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public fb: FormBuilder,
+    private storage: Storage,
   ) {
 
     this.authForm = fb.group({
@@ -32,6 +33,16 @@ export class ChangepwdPage {
 
   changePwdFn(){
     
+  }
+
+  chkCurrentPWD() {
+     this.storage.get('lsCustCode').then((custCode) => {
+      if(custCode === this.currentPassword){
+        alert("Valid")
+      }else{
+        alert("Not Matched")
+      }
+    }); 
   }
 
   showPassword() {

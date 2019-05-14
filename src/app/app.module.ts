@@ -9,6 +9,8 @@ import { IonicStorageModule } from '@ionic/storage';
 import { CommfuncProvider } from '../providers/commfunc/commfunc';
 import { Network } from '@ionic-native/network';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { SQLite } from '@ionic-native/sqlite';
+import { Geolocation } from '@ionic-native/geolocation';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
     SplashScreen,
     Network,
     BarcodeScanner,
+    SQLite,
+    Geolocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     CommfuncProvider
   ]

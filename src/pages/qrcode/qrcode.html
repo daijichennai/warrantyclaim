@@ -1,40 +1,101 @@
+<!--
+  Generated template for the BarcodePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
 <ion-header>
-  <ion-navbar color="primary" >
+
+  <ion-navbar color="primary">
+    <!--  <ion-buttons left>
+        <button ion-button (click)="Cancel()" icon-only>
+      <ion-icon name="arrow-round-back"></ion-icon>
+    </button>
+	</ion-buttons>-->
     <ion-title>Claim Request</ion-title>
+    <ion-buttons right>
+      <button ion-button icon-only (click)="Review(TotSum)">
+        <ion-icon class="iccon-class" name="cart"><span
+            style="position:absolute; top:-1px; left:10px; font-size:20px; color:#000 !important"><b>{{TotSum}}</b></span>
+        </ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
-
 <ion-content padding style="font-family: Poppins-Regular;">
-<p style="color: #000; font-size:12px;" text-center> * Click CART icon to REVIEW CLAIM Items * </p>
-<p style="color: #000; font-size:12px;" text-center> * CLAIM Applicable Upto 15 Days From Invoice Date * </p>
-<p style="color: #000; font-size:12px;" text-center> * Multiple ITEM For Single Invoice Can be Scan, But Multiple
-  INVOICE Can't Be scanned * </p>
-  <div text-center style="color: #000;">
+  <p style="color: #000; font-size:12px;" align="center"> * Click CART icon to REVIEW CLAIM Items * </p>
+  <p style="color: #000; font-size:12px;" align="center"> * CLAIM Applicable Upto 15 Days From Invoice Date * </p>
+  <p style="color: #000; font-size:12px;" align="center"> * Multiple ITEM For Single Invoice Can be Scan, But Multiple
+    INVOICE Can't Be scanned * </p>
+  <div text-center style="color: #000;" *ngIf="QRImage">
     <img src="../../assets/imgs/qr.svg" style="height:70%; width:70%" />
   </div>
-<!-- <div text-center style="color: #000;" *ngIf="QRImage">
-  <img src="../../assets/imgs/qr.svg" style="height:70%; width:70%" />
-</div> -->
-<p style="color: #000; font-size:12px;" text-center> * Item Can't Repeats For Same Invoice To Claim * </p>
-<ion-grid *ngIf="Expire">
-  <ion-row>
-    <ion-col col-12>
-      <ion-label style=" font-size:18px;" color="danger" text-wrap>Warranty Claim Expires for this Material</ion-label>
-    </ion-col>
-  </ion-row>
-</ion-grid>
-<ion-grid *ngIf="Waiting">
-  <ion-row>
-    <ion-col col-12>
-      <ion-label style=" font-size:18px;" color="danger" text-wrap>Data not updated on server please wait</ion-label>
-    </ion-col>
-  </ion-row>
-</ion-grid>
-<h1>
-  <button ion-button id="Scanbtn" style="color:#FFFFFF" full (click)="scanQRCode()">QR SCAN</button>
-</h1>
+  <p style="color: #000; font-size:12px;" align="center"> * Item Can't Repeats For Same Invoice To Claim * </p>
+  <ion-grid *ngIf="Expire">
+    <ion-row>
+      <ion-col col-12>
+        <ion-label style=" font-size:18px;" color="danger" text-wrap>Warranty Claim Expires for this Material
+        </ion-label>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid *ngIf="Waiting">
+    <ion-row>
+      <ion-col col-12>
+        <ion-label style=" font-size:18px;" color="danger" text-wrap>Data not updated on server please wait</ion-label>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <h1>
+    <button ion-button id="Scanbtn" style="color:#FFFFFF" full (click)="BarScan()">QR SCAN</button>
+  </h1>
 
-<label [innerHtml]="scannedData">
-  
-</label>
+  <p style="color: #000; font-size:12px;" align="center"> * Click QR SCAN button to scan material QR Code * </p>
+  <form [formGroup]="credentialsForm" (ngSubmit)="saveData()">
+    <ion-grid *ngIf="ShowForm">
+      <ion-input type="hidden" [(ngModel)]="CompanyName" [readonly]="readonly"
+        [formControl]="credentialsForm.controls['CompanyName']" name="CompanyName"></ion-input>
+      <ion-input type="hidden" [(ngModel)]="Address" [readonly]="readonly"
+        [formControl]="credentialsForm.controls['Address']" name="Address"></ion-input>
+      <ion-input type="hidden" [(ngModel)]="InvoiceNo" [readonly]="readonly"
+        [formControl]="credentialsForm.controls['InvoiceNo']" name="InvoiceNo"></ion-input>
+      <ion-input type="hidden" [(ngModel)]="UserId" [readonly]="readonly"
+        [formControl]="credentialsForm.controls['UserId']" name="UserId"></ion-input>
+      <ion-input type="hidden" [(ngModel)]="MaterialName" [disabled]="true"
+        [formControl]="credentialsForm.controls['MaterialName']" name="MaterialName"></ion-input>
+      <ion-input type="hidden" [(ngModel)]="InvoiceDate" [disabled]="true"
+        [formControl]="credentialsForm.controls['InvoiceDate']" name="InvoiceDate"></ion-input>
+
+      <ion-input type="hidden" [(ngModel)]="date" name="date"></ion-input>
+
+      <ion-item>
+        <ion-label floating>Material Code <span style="color:#FF0000"> *</span>:</ion-label>
+        <ion-input type="text" [(ngModel)]="MaterialCode" [disabled]="true"
+          [formControl]="credentialsForm.controls['MaterialCode']" name="MaterialCode"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Warranty Type <span style="color:#FF0000"> *</span>:</ion-label>
+        <ion-select [(ngModel)]="warrenty" name="warrenty" [formControl]="credentialsForm.controls['warrenty']">
+          <ion-option value="Shortage">Shortage</ion-option>
+          <ion-option value="Damage">Damage</ion-option>
+          <ion-option value="Defective">Defective</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Quantity <span style="color:#FF0000"> *</span>:</ion-label>
+        <ion-input type="tel" [(ngModel)]="Quantity" [readonly]="readonly"
+          [formControl]="credentialsForm.controls['Quantity']" name="Quantity"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Remarks <span style="color:#FF0000">*</span> :</ion-label>
+        <ion-textarea [(ngModel)]="Remarks" [formControl]="credentialsForm.controls['Remarks']" name="Remarks">
+        </ion-textarea>
+      </ion-item>
+      <ion-row>
+        <ion-col col-8 text-right>
+          <button ion-button type='submit'>ADD ITEM</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
 </ion-content>

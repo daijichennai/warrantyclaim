@@ -9,7 +9,8 @@
 
     <ion-item>
       <ion-label floating>Current Password</ion-label>
-      <ion-input type="{{type}}" value="" [(ngModel)]="currentPassword" [formControl]="authForm.controls['currentPWD']">
+      <ion-input type="{{type}}" value="" [(ngModel)]="currentPassword" (blur)='chkCurrentPWD()'
+        [formControl]="authForm.controls['currentPWD']">
       </ion-input>
        <button *ngIf="!showPass" ion-button clear color="dark" type="button" item-right (click)="showPassword()">
          <ion-icon name="ios-eye-off-outline"></ion-icon>

@@ -83,21 +83,6 @@ export class LoginPage {
         loader.dismiss();
       });
     });
-
-
-    // this.http.post(url, queryParams).subscribe(result => { 
-    //   console.log(result);
-      
-       
-    //   },
-    //   error => {
-    //     console.log(error);
-    // });
-    
-
-
-
-
   }
 
   goToRegister(){

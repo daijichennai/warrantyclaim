@@ -37,7 +37,7 @@ export class ListclaimPage {
 
   getListClaimByCustCode(custCode) {
     let data: Observable<any>;
-    //alert(custCode);
+    // alert(custCode);
     let url = this.myFunc.domainURL + "WarrantyAppAPI/RequestClaim.php?MasData=" + custCode;
     let loader = this.loadingCtrl.create({
       content: 'Fetching Data From Server...'
