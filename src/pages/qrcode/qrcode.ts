@@ -240,9 +240,9 @@ export class QrcodePage {
   BarScan() {
     localStorage.removeItem('audiolist');
     this.options = {
-      showTorchButton: true,
       resultDisplayDuration: 0,
-      torchOn: true,
+      showTorchButton: true,
+      showFlipCameraButton: true,
       prompt: "Scanning your QR Code"
     }
 

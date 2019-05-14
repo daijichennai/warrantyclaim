@@ -10,6 +10,8 @@ import { MediaCapture, MediaFile, CaptureError, CaptureVideoOptions } from '@ion
 import { PhotoLibrary } from '@ionic-native/photo-library';
 import { Media, MediaObject } from '@ionic-native/media';
 import { File } from '@ionic-native/file';
+import { CommfuncProvider } from '../../providers/commfunc/commfunc';
+
 const MEDIA_FILES_KEY = 'mediaFiles';
 @IonicPage()
 @Component({
@@ -68,6 +70,7 @@ export class FileuploadPage {
     public photoLibrary: PhotoLibrary,
     public platform: Platform,
     private media: Media,
+    private myFunc: CommfuncProvider
   ) {
     this.id = this.navParams.get('Uid');
     this.mid = this.navParams.get('Mid');
@@ -265,7 +268,7 @@ export class FileuploadPage {
 
     }
 
-    fileTransfer.upload(this.ImageName, 'http://simpsonwms.arkaautomaations.com/WarrantyAppAPI/uploadImage.php', options)
+    fileTransfer.upload(this.ImageName, this.myFunc.domainURL + 'WarrantyAppAPI/uploadImage.php', options)
       .then((data) => {
         this.ionViewDidLoad();
         this.credentialsForm.reset();
@@ -303,7 +306,7 @@ export class FileuploadPage {
   GetImageData(respon) {
     //alert(respon);
     let data: Observable<any>;
-    data = this.http.get('http://simpsonwms.arkaautomaations.com/WarrantyAppAPI/RequestClaim.php?DataImg=' + respon);
+    data = this.http.get(this.myFunc.domainURL + 'WarrantyAppAPI/RequestClaim.php?DataImg=' + respon);
     data.subscribe(result => {
       //alert(result);
       this.typee = result;
@@ -383,7 +386,7 @@ export class FileuploadPage {
       params: { 'master_id': this.mid, 'detail_id': this.id, 'Option': this.UploadOption, 'Remarks': this.Remarks }
     }
 
-    fileTransfer.upload(this.file.externalDataDirectory.replace(/file:\/\//g, '') + file, 'http://simpsonwms.arkaautomaations.com/WarrantyAppAPI/uploadImage.php', this.Fileoptions)
+    fileTransfer.upload(this.file.externalDataDirectory.replace(/file:\/\//g, '') + file, this.myFunc.domainURL + 'WarrantyAppAPI/uploadImage.php', this.Fileoptions)
       .then((data) => {
         this.ionViewDidLoad();
         localStorage.removeItem('audiolist');
@@ -474,7 +477,7 @@ export class FileuploadPage {
       params: { 'master_id': this.mid, 'detail_id': this.id, 'Option': this.UploadOption, 'Remarks': this.Remarks }
     }
 
-    fileTransfer.upload(this.file.dataDirectory.replace(/file:\/\//g, '') + file, 'http://simpsonwms.arkaautomaations.com/WarrantyAppAPI/uploadImage.php', this.Fileoptions)
+    fileTransfer.upload(this.file.dataDirectory.replace(/file:\/\//g, '') + file, this.myFunc.domainURL + 'WarrantyAppAPI/uploadImage.php', this.Fileoptions)
       .then((data) => {
         //alert(JSON.stringify(data));
         this.ionViewDidLoad();
