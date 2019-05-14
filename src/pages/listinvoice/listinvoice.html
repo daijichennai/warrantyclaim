@@ -20,12 +20,19 @@
 
       <div><b>Status : </b>
         <ion-badge *ngIf="i.claim_status == null" color="primary">N/A</ion-badge>
+        <ion-badge *ngIf="i.claim_status == 'Pending'" color="pink">Pending</ion-badge>
+        <ion-badge *ngIf="i.claim_status == 'Waiting for Approval'" color="yellow">Waiting for Approval</ion-badge>
+        <ion-badge *ngIf="i.claim_status == 'Document Needed'" color="violet">Document Needed</ion-badge>
+        <ion-badge *ngIf="i.claim_status == 'Resend Clear Document'" color="blue">Resend Clear Document</ion-badge>
+        <ion-badge *ngIf="i.claim_status == 'Processing'" color="gary">Processing</ion-badge>
+        <ion-badge *ngIf="i.claim_status == 'Approved'" color="secondary">Processing</ion-badge>
+        <ion-badge *ngIf="i.claim_status == 'Cancelled'" color="danger">Cancelled</ion-badge>
 
         <ion-badge *ngIf="i.claim_status == 'Completed' || i.claim_status == 'Documents Uploaded'" color="secondary">
           {{i.claim_status}}</ion-badge>
 
         <ion-badge
-          *ngIf="i.claim_status == 'Processing' || i.claim_status=='Waiting for Approval' || i.claim_status=='Material Received' || i.claim_status=='Approved' || i.claim_status=='Sales Person Approved' || i.claim_status=='Documents Needed' "
+          *ngIf="i.claim_status=='Material Received' || i.claim_status=='Sales Person Approved'"
           color="blue">{{i.claim_status}}</ion-badge>
 
         <ion-badge *ngIf="i.claim_status == 'Partially Cancelled'" color="danger">{{i.claim_status}}</ion-badge>
