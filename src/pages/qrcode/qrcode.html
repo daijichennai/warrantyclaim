@@ -23,14 +23,14 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding style="font-family: Poppins-Regular;">
-  <p style="color: #000; font-size:12px;" align="center"> * Click CART icon to REVIEW CLAIM Items * </p>
-  <p style="color: #000; font-size:12px;" align="center"> * CLAIM Applicable Upto 15 Days From Invoice Date * </p>
-  <p style="color: #000; font-size:12px;" align="center"> * Multiple ITEM For Single Invoice Can be Scan, But Multiple
+  <p style="color: #000; font-size:12px;" text-center> * Click CART icon to REVIEW CLAIM Items * </p>
+  <p style="color: #000; font-size:12px;" text-center> * CLAIM Applicable Upto 15 Days From Invoice Date * </p>
+  <p style="color: #000; font-size:12px;" text-center> * Multiple ITEM For Single Invoice Can be Scan, But Multiple
     INVOICE Can't Be scanned * </p>
   <div text-center style="color: #000;" *ngIf="QRImage">
     <img src="../../assets/imgs/qr.svg" style="height:70%; width:70%" />
   </div>
-  <p style="color: #000; font-size:12px;" align="center"> * Item Can't Repeats For Same Invoice To Claim * </p>
+  <p style="color: #000; font-size:12px;" text-center> * Item Can't Repeats For Same Invoice To Claim * </p>
   <ion-grid *ngIf="Expire">
     <ion-row>
       <ion-col col-12>
@@ -50,7 +50,7 @@
     <button ion-button id="Scanbtn" style="color:#FFFFFF" full (click)="BarScan()">QR SCAN</button>
   </h1>
 
-  <p style="color: #000; font-size:12px;" align="center"> * Click QR SCAN button to scan material QR Code * </p>
+  <p style="color: #000; font-size:12px;" text-center> * Click QR SCAN button to scan material QR Code * </p>
   <form [formGroup]="credentialsForm" (ngSubmit)="saveData()">
     <ion-grid *ngIf="ShowForm">
       <ion-input type="hidden" [(ngModel)]="CompanyName" [readonly]="readonly"

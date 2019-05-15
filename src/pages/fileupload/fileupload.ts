@@ -70,7 +70,7 @@ export class FileuploadPage {
     public photoLibrary: PhotoLibrary,
     public platform: Platform,
     private media: Media,
-    private myFunc: CommfuncProvider
+    public myFunc: CommfuncProvider
   ) {
     this.id = this.navParams.get('Uid');
     this.mid = this.navParams.get('Mid');
@@ -97,14 +97,15 @@ export class FileuploadPage {
       UploadOption: [''],
       FileDateTime: ['']
     });
-    var date_to_parse = new Date();
-    var year = date_to_parse.getFullYear().toString();
-    var month = (date_to_parse.getMonth() + 1).toLocaleString();
-    var day = date_to_parse.getDate().toLocaleString();
-    var hour = date_to_parse.getHours().toLocaleString();
-    var minute = (date_to_parse.getMinutes() + 1).toLocaleString();
-    var sec = date_to_parse.getSeconds().toLocaleString();
-    this.date = year + '-' + month + '-' + day + ' ' + hour + ':' + minute + ':' + sec;
+    // var date_to_parse = new Date();
+    // var year = date_to_parse.getFullYear().toString();
+    // var month = (date_to_parse.getMonth() + 1).toLocaleString();
+    // var day = date_to_parse.getDate().toLocaleString();
+    // var hour = date_to_parse.getHours().toLocaleString();
+    // var minute = (date_to_parse.getMinutes() + 1).toLocaleString();
+    // var sec = date_to_parse.getSeconds().toLocaleString();
+    // this.date = year + '-' + month + '-' + day + ' ' + hour + ':' + minute + ':' + sec;
+    this.date = this.myFunc.getDate();
   }
 
   GetImage() {
@@ -125,19 +126,8 @@ export class FileuploadPage {
         this.photoLibrary.getLibrary().subscribe({
           next: library => {
             library.forEach(function (imageData) {
-
-              //alert(imageData.fileName);
               if (imageData.fileName != '') {
-                var dateTime = new Date(imageData.creationDate);
-
-                var year = dateTime.getFullYear().toString();
-                var month = (dateTime.getMonth() + 1).toLocaleString();
-                var day = dateTime.getDate().toLocaleString();
-                var hour = dateTime.getHours().toLocaleString();
-                var minute = (dateTime.getMinutes() + 1).toLocaleString();
-                var sec = dateTime.getSeconds().toLocaleString();
-                //alert();
-                this.FileDate = year + '-' + month + '-' + day + ' ' + hour + ':' + minute + ':' + sec;
+                this.FileDate = this.myFunc.getDate();
                 //alert(this.FileDate);
               }
             });
@@ -167,7 +157,6 @@ export class FileuploadPage {
     });
     this.camera.getPicture(options).then((imageData) => {
       this.ImageName = 'data:image/jpeg;base64,' + imageData;
-
       loader.dismiss();
     }, (err) => {
       //alert(err);
@@ -204,35 +193,11 @@ export class FileuploadPage {
 
   saveData() {
     if (this.UploadOption == undefined) {
-      let altsuccess = this.alertCtrl.create({
-        title: 'Alert',
-        message: 'Upload Option Should Not Be Empty..!',
-        buttons: [
-          {
-            text: 'OK',
-            handler: () => {
-
-            }
-          }
-        ]
-      });
-      altsuccess.present();
+      this.alertMsgFn('Upload Option Should Not Be Empty..!');
       return false;
     }
     if (this.Remarks == undefined) {
-      let altsuccess = this.alertCtrl.create({
-        title: 'Alert',
-        message: 'Remarks Should Not Be Empty..!',
-        buttons: [
-          {
-            text: 'OK',
-            handler: () => {
-
-            }
-          }
-        ]
-      });
-      altsuccess.present();
+      this.alertMsgFn('Remarks Should Not Be Empty..!');
       return false;
     }
     if (this.ImageName != undefined) {
@@ -273,19 +238,7 @@ export class FileuploadPage {
         this.ionViewDidLoad();
         this.credentialsForm.reset();
         loader.dismiss();
-        let altsuccess = this.alertCtrl.create({
-          title: 'Success',
-          message: 'Image uploaded successfully..!',
-          buttons: [
-            {
-              text: 'OK',
-              handler: () => {
-                //this.navCtrl.push(CreditListPage);
-              }
-            }
-          ]
-        });
-        altsuccess.present();
+        this.alertMsgFn('Image uploaded successfully..!');
         this.mid = this.Fcmid;
         this.id = this.Fcid;
       }, (err) => {
@@ -392,20 +345,7 @@ export class FileuploadPage {
         localStorage.removeItem('audiolist');
         this.credentialsForm.reset();
         loader.dismiss();
-        let altsuccess = this.alertCtrl.create({
-          title: 'Success',
-          message: 'Audio uploaded successfully..!',
-          buttons: [
-            {
-              text: 'OK',
-              handler: () => {
-                //this.navCtrl.push(CreditListPage);
-              }
-            }
-          ]
-        });
-        altsuccess.present();
-
+        this.alertMsgFn('Audio uploaded successfully..!');
         this.mid = this.Fcmid;
         this.id = this.Fcid;
       }, (err) => {
@@ -483,22 +423,9 @@ export class FileuploadPage {
         this.ionViewDidLoad();
         this.storage.set(MEDIA_FILES_KEY, '');
         localStorage.removeItem('audiolist');
-
         this.credentialsForm.reset();
         loader.dismiss();
-        let altsuccess = this.alertCtrl.create({
-          title: 'Success',
-          message: 'Video uploaded successfully..!',
-          buttons: [
-            {
-              text: 'OK',
-              handler: () => {
-                //this.navCtrl.push(CreditListPage);
-              }
-            }
-          ]
-        });
-        altsuccess.present();
+        this.alertMsgFn('Video uploaded successfully..!');       
         this.mid = this.Fcmid;
         this.id = this.Fcid;
       }, (err) => {
@@ -515,6 +442,22 @@ export class FileuploadPage {
       //alert(this.mediaFiles);
       this.VideoName = this.mediaFiles[0].name;
     })
+  }
+
+  alertMsgFn(msg){
+    let altsuccess = this.alertCtrl.create({
+      title: 'Success',
+      message: msg,
+      buttons: [
+        {
+          text: 'OK',
+          handler: () => {
+            //this.navCtrl.push(CreditListPage);
+          }
+        }
+      ]
+    });
+    altsuccess.present();
   }
 
 }

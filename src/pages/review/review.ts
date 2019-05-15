@@ -15,7 +15,7 @@ import { CommfuncProvider } from '../../providers/commfunc/commfunc';
 export class ReviewPage {
   public userID: any;
   public ServerValue: any;
-  public typee: any;
+  public reviewJson: any;
   public refNo: any;
   public refDate: any;
   public lat: any;
@@ -158,7 +158,7 @@ export class ReviewPage {
                           .then(res => {
                           }).catch(e => console.log(e));
                       }, (error) => {
-                        //`	alert(JSON.stringify(error));
+                        //	alert(JSON.stringify(error));
                       });
                       let altsuccess = this.alertCtrl.create({
                         title: 'Success',
@@ -215,7 +215,7 @@ export class ReviewPage {
     let data: Observable<any>;
     data = this.http.get(this.myFunc.domainURL + 'WarrantyAppAPI/RequestClaim.php?Data=' + respon);
     data.subscribe(result => {
-      this.typee = result;
+      this.reviewJson = result;
       this.refNo = resvalue[1];
       this.refDate = resvalue[2];
     }, (error) => {
