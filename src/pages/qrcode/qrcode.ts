@@ -68,7 +68,7 @@ export class QrcodePage {
     if (this.navCtrl.last().name == 'ReviewPage' || this.navCtrl.last().name == 'UnmatchinvoicePage' || this.navCtrl.last().name == 'ItemexistPage') {
       this.BarScan();
     }
-    this.storage.get('user_id').then((val) => {
+    this.storage.get('lsUserID').then((val) => {
       if (val != '') {
         this.UserId = val;
       }
