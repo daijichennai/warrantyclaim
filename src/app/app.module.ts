@@ -17,6 +17,9 @@ import { MediaCapture } from '@ionic-native/media-capture';
 import { PhotoLibrary } from '@ionic-native/photo-library';
 import { Media } from '@ionic-native/media';
 import { File } from '@ionic-native/file';
+import { Device } from '@ionic-native/device';
+import { Sim } from '@ionic-native/sim';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -44,6 +47,8 @@ import { File } from '@ionic-native/file';
     PhotoLibrary,
     Media,
     File,
+    Device,
+    Sim,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     CommfuncProvider
   ]

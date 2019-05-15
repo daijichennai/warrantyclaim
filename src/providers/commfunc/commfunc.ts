@@ -17,4 +17,18 @@ export class CommfuncProvider {
      return amt.toLocaleString("en-IN", { currency: "INR" })
   }
 
+  getDate(){
+    var date_to_parse = new Date();
+    var year = date_to_parse.getFullYear().toString();
+    var month = (date_to_parse.getMonth() + 1).toLocaleString();
+    var day = date_to_parse.getDate().toLocaleString();
+    var hour = date_to_parse.getHours().toLocaleString();
+    var minute = (date_to_parse.getMinutes() + 1).toLocaleString();
+    var sec = date_to_parse.getSeconds().toLocaleString();
+
+    return  year + '-' + month + '-' + day + ' ' + hour + ':' + minute + ':' + sec;
+  }
+
+   
+
 }

@@ -93,15 +93,15 @@ export class QrcodePage {
     this.QRImage = true;
     this.ShowForm = false;
     this.getData();
-    var date_to_parse = new Date();
-    var year = date_to_parse.getFullYear().toString();
-    var month = (date_to_parse.getMonth() + 1).toLocaleString();
-    var day = date_to_parse.getDate().toLocaleString();
-    var hour = date_to_parse.getHours().toLocaleString();
-    var minute = (date_to_parse.getMinutes() + 1).toLocaleString();
-    var sec = date_to_parse.getSeconds().toLocaleString();
-
-    this.date = year + '-' + month + '-' + day + ' ' + hour + ':' + minute + ':' + sec;
+    // var date_to_parse = new Date();
+    // var year = date_to_parse.getFullYear().toString();
+    // var month = (date_to_parse.getMonth() + 1).toLocaleString();
+    // var day = date_to_parse.getDate().toLocaleString();
+    // var hour = date_to_parse.getHours().toLocaleString();
+    // var minute = (date_to_parse.getMinutes() + 1).toLocaleString();
+    // var sec = date_to_parse.getSeconds().toLocaleString();
+    // this.date = year + '-' + month + '-' + day + ' ' + hour + ':' + minute + ':' + sec;
+    this.date = this.myFunc.getDate();
     this.sqlite.create({
       name: 'ionicdb.db',
       location: 'default'
@@ -118,15 +118,16 @@ export class QrcodePage {
     this.QRImage = true;
     this.ShowForm = false;
     this.getData();
-    var date_to_parse = new Date();
-    var year = date_to_parse.getFullYear().toString();
-    var month = (date_to_parse.getMonth() + 1).toLocaleString();
-    var day = date_to_parse.getDate().toLocaleString();
-    var hour = date_to_parse.getHours().toLocaleString();
-    var minute = (date_to_parse.getMinutes() + 1).toLocaleString();
-    var sec = date_to_parse.getSeconds().toLocaleString();
+    // // var date_to_parse = new Date();
+    // // var year = date_to_parse.getFullYear().toString();
+    // // var month = (date_to_parse.getMonth() + 1).toLocaleString();
+    // // var day = date_to_parse.getDate().toLocaleString();
+    // // var hour = date_to_parse.getHours().toLocaleString();
+    // // var minute = (date_to_parse.getMinutes() + 1).toLocaleString();
+    // // var sec = date_to_parse.getSeconds().toLocaleString();
 
-    this.date = year + '-' + month + '-' + day + ' ' + hour + ':' + minute + ':' + sec;
+    // this.date = year + '-' + month + '-' + day + ' ' + hour + ':' + minute + ':' + sec;
+    this.date = this.myFunc.getDate();
 
     this.sqlite.create({
       name: 'ionicdb.db',
