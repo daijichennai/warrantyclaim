@@ -247,6 +247,8 @@ export class QrcodePage {
                 }
               }
               else {
+                this.QRImage = true;
+                 this.ShowForm = false;
                 this.navCtrl.push('ItemexistPage',{
                     Lclr: '0'
                 });
@@ -255,6 +257,8 @@ export class QrcodePage {
           }).catch(e => console.log(e));
         }
         else {
+          this.ShowForm = false;
+          this.QRImage = true;
           this.navCtrl.push('ItemexistPage', {
              Lclr: '1'
           });
