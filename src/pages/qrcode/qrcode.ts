@@ -86,7 +86,7 @@ export class QrcodePage {
       location: 'default'
     }).then((db: SQLiteObject) => {
       db.executeSql('SELECT COUNT(rowid) AS TotSum,InvoiceNo FROM WarrentyRequest ORDER BY rowid DESC', []).then(res => {
-        alert(JSON.stringify(res));
+        //alert(JSON.stringify(res));
         this.TotSum = res.rows.item(0).TotSum;
         this.QrInv = res.rows.item(0).InvoiceNo;
       }).catch(e => console.log(e));
@@ -187,7 +187,7 @@ export class QrcodePage {
       let data: Observable<any>;
       data = this.http.get(this.myFunc.domainURL + 'WarrantyAppAPI/GetQRDetails.php?InvoiceNo=' + this.splitted[1] + '&MaterialCode=' + this.splitted[2]);
       data.subscribe(result => {
-        alert(JSON.stringify(result));
+        //alert(JSON.stringify(result));
         if (JSON.stringify(result) === null) {
           this.QRImage = true;
           this.Expire = false;
@@ -222,8 +222,8 @@ export class QrcodePage {
                   let CurDate :any  = new Date(this.date);
                   let invDate: any = new Date(result[0].invoice_date);
                   let resDate: any = (CurDate - invDate) / (24 * 3600 * 1000);
-                  alert('CurDate = ' + CurDate);
-                  alert('resDate = ' + resDate);
+                  // alert('CurDate = ' + CurDate);
+                  // alert('resDate = ' + resDate);
                   if (parseInt(resDate) < 15) {
                     this.QRImage = false;
                     this.Expire = false;
