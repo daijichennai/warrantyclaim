@@ -40,24 +40,20 @@
               <ion-col col-1 text-center> : </ion-col>
               <ion-col col-7> {{i.warranty_request_type}}</ion-col>
             </ion-row>
-            <ion-row class="bottomRow" *ngIf="i.claim_status=='Documents Needed'">
+            <ion-row class="bottomRow">
               <ion-col col-4><strong>Status </strong></ion-col>
               <ion-col col-1 text-center> : </ion-col>
               <ion-col col-7>{{i.claim_status}}</ion-col>
             </ion-row>
-            <ion-row class="bottomRow" *ngIf="i.claim_status!='Documents Needed'">
-              <ion-col col-4><strong>Status </strong></ion-col>
-              <ion-col col-1 text-center> : </ion-col>
-              <ion-col col-7> {{i.claim_status}}</ion-col>
-            </ion-row>
+            
             <ion-row class="bottomRow">
-              <ion-col (click)="goToReviewPage(i.claim_details_id,'Server')">
-                <button ion-button round>
+              <ion-col >
+                <button ion-button round (click)="goToReviewPage(i.claim_details_id,'Server')">
                   <span class="text" style="color: #fff; font-size:12px;">VIEW</span>
                 </button>
               </ion-col>
 
-              <ion-col (click)="UploadData(i.claim_details_id,Mid)">
+              <ion-col *ngIf="i.claim_status!='Completed'"  (click)="UploadData(i.claim_details_id)">
                 <button ion-button round>
                   <span style="color: #fff; font-size:12px;">ADD Docx.</span>
                 </button>

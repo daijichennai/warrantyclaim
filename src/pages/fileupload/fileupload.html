@@ -7,10 +7,10 @@
 <ion-content padding>
   <ion-grid>
     <form [formGroup]="credentialsForm" (ngSubmit)="saveData()">
-      <ion-input type="hidden" [(ngModel)]="mid" [readonly]="readonly" [formControl]="credentialsForm.controls['mid']"
+      <!-- <ion-input type="hidden" [(ngModel)]="mid" [readonly]="readonly" [formControl]="credentialsForm.controls['mid']"
         name="mid"></ion-input>
       <ion-input type="hidden" [(ngModel)]="id" [readonly]="readonly" [formControl]="credentialsForm.controls['id']"
-        name="id"></ion-input>
+        name="id"></ion-input> -->
 
       <ion-item>
         <ion-label floating>Upload <span style="color:#FF0000">*</span>:</ion-label>
@@ -22,7 +22,11 @@
           <ion-option value="Video Capture">Video Capture</ion-option>
         </ion-select>
       </ion-item>
-      <ion-input type="text" [(ngModel)]="FileDateTime" [readonly]="readonly"
+      <!-- <ion-input type="text" [(ngModel)]="FileDateTime" [readonly]="readonly"
+        value='{{date | date: "yyyy-MM-dd HH:mm:ss"}}' [formControl]="credentialsForm.controls['FileDateTime']"
+        name="FileDateTime"></ion-input>
+      {{FileDate}} -->
+      <ion-input type="text"  
         value='{{date | date: "yyyy-MM-dd HH:mm:ss"}}' [formControl]="credentialsForm.controls['FileDateTime']"
         name="FileDateTime"></ion-input>
       {{FileDate}}
@@ -59,12 +63,12 @@
       </ion-list>
       <ion-row *ngIf="ImageName!=undefined">
         <p> <img src="{{ImageName}}" width="200px;" height="200px;" /></p>
-        <ion-input type="hidden" [(ngModel)]="ImageName" *ngIf="ImageName" [readonly]="readonly"
+        <ion-input type="hidden" [(ngModel)]="ImageName" *ngIf="ImageName" 
           [formControl]="credentialsForm.controls['ImageName']" name="ImageName"></ion-input>
       </ion-row>
-      <ion-input type="text" [(ngModel)]="VideoName" *ngIf="VideoName" [readonly]="readonly"
+      <ion-input type="text" [(ngModel)]="VideoName" *ngIf="VideoName" 
         [formControl]="credentialsForm.controls['VideoName']" name="VideoName"></ion-input>
-      <ion-input type="hidden" [(ngModel)]="AudioName" *ngIf="AudioName" [readonly]="readonly"
+      <ion-input type="hidden" [(ngModel)]="AudioName" *ngIf="AudioName" 
         [formControl]="credentialsForm.controls['AudioName']" name="AudioName"></ion-input>
 
       <ion-list>
