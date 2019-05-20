@@ -45,6 +45,10 @@ export class ReviewdetailsPage {
 
   }
 
+  goToHome(){
+    this.navCtrl.setRoot('HomePage');
+  }
+  
   ionViewDidLoad() {
     if (this.SValue == 'Local') {
       this.ReviewDetails(this.Id);

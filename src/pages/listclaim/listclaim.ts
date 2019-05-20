@@ -29,6 +29,10 @@ export class ListclaimPage {
     });    
   }
 
+  goToHome(){
+    this.navCtrl.setRoot('HomePage');
+  }
+
   goToClaimDetails(claimID){
     this.navCtrl.push('ClaimdetailsPage',{
       "claimID": claimID

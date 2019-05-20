@@ -108,6 +108,10 @@ export class FileuploadPage {
     this.date = this.myFunc.getDate();
   }
 
+   goToHome(){
+    this.navCtrl.setRoot('HomePage');
+  }
+
   GetImage() {
     const options: CameraOptions = {
       quality: 80,
@@ -229,8 +233,13 @@ export class FileuploadPage {
       chunkedMode: false,
       httpMethod: 'post',
       mimeType: "multipart/form-data",
-      params: { 'master_id': this.mid, 'detail_id': this.id, 'Option': this.UploadOption, 'Remarks': this.Remarks }
-
+      params: { 
+          'master_id': this.mid,
+          'detail_id': this.id,
+          'Option': this.UploadOption,
+          'Remarks': this.Remarks,
+          //'claim_status':'Documents Uploaded'
+      }
     }
 
     fileTransfer.upload(this.ImageName, this.myFunc.domainURL + 'WarrantyAppAPI/uploadImage.php', options)
@@ -336,7 +345,13 @@ export class FileuploadPage {
       chunkedMode: false,
       httpMethod: 'post',
       mimeType: "multipart/form-data",
-      params: { 'master_id': this.mid, 'detail_id': this.id, 'Option': this.UploadOption, 'Remarks': this.Remarks }
+      params: { 
+        'master_id': this.mid,
+        'detail_id': this.id,
+        'Option': this.UploadOption,
+        'Remarks': this.Remarks,
+        //'claim_status':'Documents Uploaded'
+      }
     }
 
     fileTransfer.upload(this.file.externalDataDirectory.replace(/file:\/\//g, '') + file, this.myFunc.domainURL + 'WarrantyAppAPI/uploadImage.php', this.Fileoptions)
@@ -414,7 +429,13 @@ export class FileuploadPage {
       chunkedMode: false,
       httpMethod: 'post',
       mimeType: "multipart/form-data",
-      params: { 'master_id': this.mid, 'detail_id': this.id, 'Option': this.UploadOption, 'Remarks': this.Remarks }
+      params: { 
+        'master_id': this.mid,
+        'detail_id': this.id,
+        'Option': this.UploadOption,
+        'Remarks': this.Remarks,
+        //'claim_status':'Documents Uploaded'
+      }
     }
 
     fileTransfer.upload(this.file.dataDirectory.replace(/file:\/\//g, '') + file, this.myFunc.domainURL + 'WarrantyAppAPI/uploadImage.php', this.Fileoptions)

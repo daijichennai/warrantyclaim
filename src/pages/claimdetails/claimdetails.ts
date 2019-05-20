@@ -35,6 +35,10 @@ export class ClaimdetailsPage {
     }); 
   }
 
+  goToHome(){
+    this.navCtrl.setRoot('HomePage');
+  }
+
   getClaimDetailsByID(claimID,customerCode) {
     let data: Observable<any>;
     //alert(custCode);
