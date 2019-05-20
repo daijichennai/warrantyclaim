@@ -137,19 +137,36 @@ export class ReviewPage {
                 this.warrentyData = [];
                 for (var i = 0; i < res.rows.length; i++) {
                   this.warrentyData.push({
-                    CompanyName: res.rows.item(i).CompanyName, Address: res.rows.item(i).Address, InvoiceNo: res.rows.item(i).InvoiceNo, InvoiceDate: res.rows.item(i).InvoiceDate, MaterialCode: res.rows.item(i).MaterialCode, MaterialName: res.rows.item(i).MaterialName, Quantity: res.rows.item(i).Quantity, warrenty: res.rows.item(i).warrenty, Remarks: res.rows.item(i).Remarks
+                    CompanyName: res.rows.item(i).CompanyName,
+                    Address: res.rows.item(i).Address,
+                    InvoiceNo: res.rows.item(i).InvoiceNo,
+                    InvoiceDate: res.rows.item(i).InvoiceDate,
+                    MaterialCode: res.rows.item(i).MaterialCode, 
+                    MaterialName: res.rows.item(i).MaterialName,
+                    Quantity: res.rows.item(i).Quantity,
+                    warrenty: res.rows.item(i).warrenty,
+                    Remarks: res.rows.item(i).Remarks
                   });
                 }
 
-                this.storage.get('lsCustCode').then((val) => {
-                  if (val != '') {
-                    let optionsGPS = { timeout: 3000, enableHighAccuracy: true };
+                this.storage.get('lsCustCode').then((customerCode) => {
+                  if (customerCode != '') {
+                    let optionsGPS = { 
+                        timeout: 3000,
+                        enableHighAccuracy: true 
+                    };
                     this.geolocation.getCurrentPosition(optionsGPS).then((resp) => {
                       this.lat = resp.coords.latitude;
                       this.long = resp.coords.longitude;
 
                       var link = this.myFunc.domainURL +  'WarrantyAppAPI/CreateClaim.php';
-                      var myData = JSON.stringify({ warrentyData: this.warrentyData, Count: res.rows.length, c_code: val, Latitude: this.lat, Longitude: this.long });
+                      var myData = JSON.stringify({
+                         warrentyData: this.warrentyData,
+                         Count: res.rows.length,
+                         c_code: customerCode,
+                         Latitude: this.lat,
+                         Longitude: this.long 
+                      });
 
                       this.http.post(link, myData, { responseType: 'text' }).subscribe(data => {
                         this.ServerValue = data;
@@ -174,7 +191,7 @@ export class ReviewPage {
                       });
                       altsuccess.present();
                     }).catch((error) => {
-                      alert(JSON.stringify(error));
+                      //alert(JSON.stringify(error));
                       let altsuccess = this.alertCtrl.create({
                         title: 'Alert',
                         message: 'Enable Location And Create Claim..!',
