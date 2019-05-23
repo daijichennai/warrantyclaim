@@ -31,6 +31,10 @@ export class ListinvoicePage {
     });    
   }
 
+  goToHome() {
+    this.navCtrl.setRoot('HomePage');
+  }
+
 goToInvoiceDetails(invoiceNo){
   this.navCtrl.push('InvoicedetailsPage',{
     "invoiceNo" : invoiceNo
@@ -55,6 +59,7 @@ goToInvoiceDetails(invoiceNo){
         this.isInvAvailable = true;
         loader.dismiss();        
         console.log(error);
+        //alert(error.message);
         //alert('Error in Invoice');
       });
     });

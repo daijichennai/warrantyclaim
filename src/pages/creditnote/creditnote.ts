@@ -19,9 +19,13 @@ export class CreditnotePage {
     private http: HttpClient,
     private storage: Storage,
     private loadingCtrl: LoadingController,
-    private myFunc: CommfuncProvider
+    public myFunc: CommfuncProvider
   ) {
 
+  }
+
+  goToHome() {
+    this.navCtrl.setRoot('HomePage');
   }
 
   ionViewDidLoad() {
@@ -40,13 +44,17 @@ export class CreditnotePage {
     loader.present().then(() => {
       data.subscribe(result => {
         console.log(result);
-        this.isCreditAvailable = false;
-        this.creditNoteJson = result;
+        if (result.length != 0) {
+          this.creditNoteJson = result;
+        } else {
+          this.isCreditAvailable = true;
+        }        
         loader.dismiss();
       }, error => {
           this.isCreditAvailable = true;
         loader.dismiss();
         console.log(error);
+        //alert(error.message);
         //alert('Error in Credit Note');
       });
     });

@@ -44,8 +44,8 @@ export class RegisterPage {
       this.authForm = fb.group({
         'chkFullUserName': [null, Validators.compose([Validators.required])],
         'chkCustCode': [null, Validators.compose([Validators.required])],
-        'chkUserName': [null, Validators.compose([Validators.required])],
-        'chkUserPassword': [null, Validators.compose([Validators.required])]
+        'chkUserName': ['', Validators.compose([Validators.required, Validators.minLength(8)])],
+        'chkUserPassword': ['', Validators.compose([Validators.required, Validators.minLength(8)])],
       });
 
   }
@@ -100,6 +100,7 @@ export class RegisterPage {
         loader.dismiss();
       }, error => {
         console.log(error);
+          alert(error.message);
         loader.dismiss();
       });
     });

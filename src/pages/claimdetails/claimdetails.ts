@@ -55,6 +55,7 @@ export class ClaimdetailsPage {
       }, error => {
         loader.dismiss();        
         console.log(error);
+          alert(error.message);
         //alert('Error in Claim Details');
       });
     });

@@ -48,12 +48,15 @@ export class InvoicedetailsPage {
       }, error => {
         loader.dismiss();        
         console.log(error);
+          alert(error.message);
         //alert('Error');
       });
     });
   }
 
- 
+  goToHome() {
+    this.navCtrl.setRoot('HomePage');
+  }
   // convertINR(amt:number) {
   //   return amt.toLocaleString("en-IN", { currency: "INR" })
   //   //return Number((amt).toFixed(2)).toLocaleString(); //amt.toFixed(2).replace(/(\d)(?=(\d{2})+\d\.)/g, '$1,')

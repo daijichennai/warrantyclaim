@@ -1,6 +1,11 @@
 <ion-header>
   <ion-navbar color="primary">
     <ion-title>List Invoice</ion-title>
+    <ion-buttons end>
+      <button text-right ion-button icon-only (click)="goToHome()">
+        <ion-icon ios="ios-home" md="md-home"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
   <ion-toolbar color="primary">
     <ion-searchbar showCancelButton="true" (ionInput)="onSearch($event)"
@@ -22,10 +27,10 @@
         <ion-badge *ngIf="i.claim_status == null" color="primary">N/A</ion-badge>
         <ion-badge *ngIf="i.claim_status == 'Pending'" color="pink">Pending</ion-badge>
         <ion-badge *ngIf="i.claim_status == 'Waiting for Approval'" color="yellow">Waiting for Approval</ion-badge>
-        <ion-badge *ngIf="i.claim_status == 'Documents Needed'" color="violet">Document Needed</ion-badge>
+        <ion-badge *ngIf="i.claim_status == 'Documents Needed'" color="violet">Documents Needed</ion-badge>
         <ion-badge *ngIf="i.claim_status == 'Resend Clear Document'" color="blue">Resend Clear Document</ion-badge>
         <ion-badge *ngIf="i.claim_status == 'Processing'" color="gary">Processing</ion-badge>
-        <ion-badge *ngIf="i.claim_status == 'Approved'" color="secondary">Processing</ion-badge>
+        <ion-badge *ngIf="i.claim_status == 'Approved'" color="secondary">Approved</ion-badge>
         <ion-badge *ngIf="i.claim_status == 'Cancelled'" color="danger">Cancelled</ion-badge>
 
         <ion-badge *ngIf="i.claim_status == 'Completed' || i.claim_status == 'Documents Uploaded'" color="secondary">
