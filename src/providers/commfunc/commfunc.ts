@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 export class CommfuncProvider {
 
   public domainURL:string = "http://simpsonwms.arkaautomaations.com/";
+  //public domainURL: string = "http://192.168.1.5/simpsonWMS/";
   constructor() {
   }   
 

@@ -32,13 +32,17 @@ export class ChangepwdPage {
 
     this.authForm = fb.group({
       'currentPWD': ['', Validators.compose([Validators.required])],
-      'newPWD': ['null', Validators.compose([Validators.required])],
+      'newPWD': ['', Validators.compose([Validators.required, Validators.minLength(8)])],
       'confirmPWD': ['', Validators.compose([Validators.required, this.equalto('newPWD')])],
     })  
   }
 
   ionViewDidLoad() { 
     
+  }
+
+  goToHome() {
+    this.navCtrl.setRoot('HomePage');
   }
 
   changePwdFn(){

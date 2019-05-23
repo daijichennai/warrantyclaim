@@ -32,8 +32,9 @@
        <ion-badge *ngIf="i.claim_status == 'Waiting for Approval'" color="yellow">Waiting for Approval</ion-badge>
        <ion-badge *ngIf="i.claim_status == 'Documents Needed'" color="violet">Document Needed</ion-badge>
        <ion-badge *ngIf="i.claim_status == 'Resend Clear Document'" color="blue">Resend Clear Document</ion-badge>
+       <ion-badge *ngIf="i.claim_status == 'Approval Pending'" color="danger">Approval Pending</ion-badge>
        <ion-badge *ngIf="i.claim_status == 'Processing'" color="gary">Processing</ion-badge>
-       <ion-badge *ngIf="i.claim_status == 'Approved'" color="secondary">Processing</ion-badge>
+       <ion-badge *ngIf="i.claim_status == 'Approved'" color="secondary">Approved</ion-badge>
        <ion-badge *ngIf="i.claim_status == 'Cancelled'" color="danger">Cancelled</ion-badge>
        <ion-badge *ngIf="i.claim_status == 'Completed' || i.claim_status == 'Documents Uploaded'" color="secondary">
          {{i.claim_status}}</ion-badge>

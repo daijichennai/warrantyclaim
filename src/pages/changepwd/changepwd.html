@@ -1,6 +1,11 @@
 <ion-header>
   <ion-navbar color="primary">
     <ion-title>Change Password</ion-title>
+    <ion-buttons end>
+      <button text-right ion-button icon-only (click)="goToHome()">
+        <ion-icon ios="ios-home" md="md-home"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
@@ -33,6 +38,9 @@
     <div class="error-box"
       *ngIf="authForm.controls['newPWD'].hasError('required') && authForm.controls['newPWD'].touched">
       &nbsp;* New Password is required!</div>
+      <div class="error-box" *ngIf="authForm.controls['newPWD'].hasError('minlength') &&
+          authForm.controls['newPWD'].touched">
+        * Password Should not be less than 8 characters</div>
 
 
     <ion-item>

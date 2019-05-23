@@ -50,8 +50,13 @@ export class ListclaimPage {
     loader.present().then(() => {
       data.subscribe(result => {
         console.log(result);
-        this.isClaimAvailable = false;
-        this.claimJson = result;
+        if(result.length!=0){
+          this.isClaimAvailable = false;
+          this.claimJson = result;
+        }else{
+          this.isClaimAvailable = true;
+        }
+        
         loader.dismiss();
       }, error => {
           this.isClaimAvailable = true;

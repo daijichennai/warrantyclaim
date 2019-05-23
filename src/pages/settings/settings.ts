@@ -18,6 +18,10 @@ export class SettingsPage {
   ionViewDidLoad() {
   }
 
+  goToHome() {
+    this.navCtrl.setRoot('HomePage');
+  }
+
   goToChangePwd() {
     this.navCtrl.push('ChangepwdPage');
   }
