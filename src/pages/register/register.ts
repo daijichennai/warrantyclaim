@@ -57,7 +57,10 @@ export class RegisterPage {
   SimRead() {
     this.sim.getSimInfo().then(
       (info) => this.mobileNo = info.phoneNumber,
-      (err) => alert(JSON.stringify(err))
+      (err) => { 
+        console.log(err);
+        //alert(JSON.stringify(err));
+      }
     );
 
     this.sim.hasReadPermission().then(
@@ -100,7 +103,7 @@ export class RegisterPage {
         loader.dismiss();
       }, error => {
         console.log(error);
-        alert(error.message);
+        //alert(error.message);
         loader.dismiss();
       });
     });

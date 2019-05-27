@@ -118,27 +118,33 @@ export class QrcodePage {
       let invNoFromQueryString = this.myFunc.getQueryString("inv_no", qrData.text);
       let materialCodeFromQueryString = this.myFunc.getQueryString("mat_c", qrData.text);
 
-      if (invNoFromQueryString != undefined) {
-        this.ShowForm = true;
-      }else {
-        this.ShowForm = false;
-      }
+      // alert('invNoFromQueryString = ' + invNoFromQueryString);
+      // alert('materialCodeFromQueryString = ' + materialCodeFromQueryString);
+
+      // if (invNoFromQueryString != undefined) {
+      //   this.ShowForm = true;
+      // }else {
+      //   this.ShowForm = false;
+      // }
 
       let data: Observable<any>;
       let url = this.myFunc.domainURL + "WarrantyAppAPI/GetQRDetails.php?InvoiceNo=" + invNoFromQueryString + "&MaterialCode=" + materialCodeFromQueryString;
       data = this.http.get(url);
       data.subscribe(result => {
         //alert(JSON.stringify(result));
-        if (JSON.stringify(result) === null) {
+        if (result === null || result.length === 0) {
           this.Expire = false;
           this.Waiting = false;
           this.ShowForm = false;
           this.alertMsgFn('No Data Found..!');
+        }else {
+          this.ShowForm = true;
         }
-        if (result.length === 0) {
-          this.ShowForm = false;
-          this.alertMsgFn('No Data Found..!');
-        }
+        
+        // if (result.length === 0) {
+        //   this.ShowForm = false;
+        //   this.alertMsgFn('No Data Found..!');
+        // }
 
         if (result[0].ref_no == undefined) {
           let matCode = result[0].part_no;

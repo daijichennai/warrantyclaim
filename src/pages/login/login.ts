@@ -77,7 +77,7 @@ export class LoginPage {
         loader.dismiss();
       }, error => {
         console.log(error);
-        alert(error.message);
+        //alert(error.message);
         loader.dismiss();
       });
     });

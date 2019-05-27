@@ -48,7 +48,7 @@ export class InvoicedetailsPage {
       }, error => {
         loader.dismiss();        
         console.log(error);
-          alert(error.message);
+          //alert(error.message);
         //alert('Error');
       });
     });

@@ -19,12 +19,10 @@ export class ItemexistPage {
 
   ionViewDidLoad() {
 
+  } 
+  goToHome() {
+    this.navCtrl.setRoot('HomePage');
   }
-
-  ionViewWillEnter() {
-
-  }
-
 
 
   PageChange() {
