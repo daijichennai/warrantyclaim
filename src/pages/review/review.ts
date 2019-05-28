@@ -47,6 +47,10 @@ export class ReviewPage {
     this.getData();
   }
 
+  goToHome(){
+    this.navCtrl.setRoot('HomePage');
+  }
+
   getData() {
     this.sqlite.create({
       name: 'ionicdb.db',

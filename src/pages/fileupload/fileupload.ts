@@ -238,7 +238,7 @@ export class FileuploadPage {
           'detail_id': this.id,
           'Option': this.UploadOption,
           'Remarks': this.Remarks,
-          //'claim_status':'Documents Uploaded'
+          'claim_status':'Documents Uploaded'
       }
     }
 
@@ -350,7 +350,7 @@ export class FileuploadPage {
         'detail_id': this.id,
         'Option': this.UploadOption,
         'Remarks': this.Remarks,
-        //'claim_status':'Documents Uploaded'
+        'claim_status':'Documents Uploaded'
       }
     }
 
@@ -434,7 +434,7 @@ export class FileuploadPage {
         'detail_id': this.id,
         'Option': this.UploadOption,
         'Remarks': this.Remarks,
-        //'claim_status':'Documents Uploaded'
+        'claim_status':'Documents Uploaded'
       }
     }
 

@@ -119,7 +119,7 @@ export class QrcodePage {
       let materialCodeFromQueryString = this.myFunc.getQueryString("mat_c", qrData.text);
 
       // alert('invNoFromQueryString = ' + invNoFromQueryString);
-      // alert('materialCodeFromQueryString = ' + materialCodeFromQueryString);
+       //alert('materialCodeFromQueryString = ' + materialCodeFromQueryString);
 
       // if (invNoFromQueryString != undefined) {
       //   this.ShowForm = true;
