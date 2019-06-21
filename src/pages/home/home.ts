@@ -40,6 +40,14 @@ export class HomePage {
     this.navCtrl.push('SettingsPage');
   }
 
+  goToCouponList(){
+    this.navCtrl.push('ListcouponPage');
+  }
+
+  goToCouponScan(){
+    this.navCtrl.push('CouponscanPage');
+  }
+
  
 
 }
