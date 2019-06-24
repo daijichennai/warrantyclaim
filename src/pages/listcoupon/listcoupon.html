@@ -31,7 +31,12 @@
                         <td><b>Status </b></td>
                         <td>:</td>
                         <td>
-                            <ion-badge color="primary">{{cl.coupon_status}}</ion-badge>
+                            <ion-badge *ngIf="cl.coupon_status_desc =='Valid'" color="secondary">
+                                {{cl.coupon_status_desc}}
+                            </ion-badge>
+                            <ion-badge *ngIf="cl.coupon_status_desc =='Invalid'" color="secondary">
+                                {{cl.coupon_status_desc}}
+                            </ion-badge>
                         </td>
                     </tr>
                 </table>

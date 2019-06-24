@@ -41,8 +41,7 @@ export class ListcouponPage {
   getListCouponByCustCode(custCode) {
     let data: Observable<any>;
     // alert(custCode);
-    //let url = this.myFunc.domainURL + "WarrantyAppAPI/coupon_list_api.php?dealer_code=" + custCode;
-    let url = this.myFunc.domainURL + "WarrantyAppAPI/coupon_list_api.php?dealer_code=T927";
+    let url = this.myFunc.domainURL + "WarrantyAppAPI/coupon_list_api.php?dealer_code=" + custCode;    
     let loader = this.loadingCtrl.create({
       content: 'Fetching Data From Server...'
     });
