@@ -45,6 +45,7 @@ goToInvoiceDetails(invoiceNo){
     let data: Observable<any>;
     //alert(custCode);
     let url = this.myFunc.domainURL + "WarrantyAppAPI/list_api.php?c_code=" + custCode;
+    alert(url);
     let loader = this.loadingCtrl.create({
       content: 'Fetching Data From Server...'
     });
