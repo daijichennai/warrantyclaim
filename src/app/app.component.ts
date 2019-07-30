@@ -30,7 +30,7 @@ export class MyApp {
 
       this.storage.get('lsUserName').then(result => {
         console.log('lsUserName: ' + result);
-        alert('User Name = ' + result);
+        // alert('User Name = ' + result);
         if (result != null && result != undefined) {
           this.rootPage = 'HomePage';
         } else {

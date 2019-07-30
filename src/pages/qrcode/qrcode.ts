@@ -15,7 +15,7 @@ import { SQLiteObject, SQLite } from '@ionic-native/sqlite';
 })
 export class QrcodePage {
   public scannedDate: any;
-  public totalSum: number;
+  public totalSum: number = 0;
   public QrInv: any;
   public ShowForm: boolean = false;
   public Expire: boolean = false;
